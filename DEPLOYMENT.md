@@ -141,6 +141,17 @@ Once deployed, you can share these URLs:
 4. **Make sure you have a `Procfile`** with content: `web: python app.py`
 5. Check that your app listens on the correct port (should use `PORT` environment variable)
 
+**If you get numpy/pandas compatibility errors:**
+```
+ValueError: numpy.dtype size changed, may indicate binary incompatibility
+```
+This happens when pandas and numpy versions are incompatible. Make sure your `requirements.txt` has:
+```
+pandas==1.5.3
+numpy==1.24.3
+openpyxl==3.1.2
+```
+
 **If you get database errors:**
 1. Railway will create a new SQLite database automatically
 2. The database will be persistent across deployments
