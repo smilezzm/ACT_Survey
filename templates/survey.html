@@ -1,0 +1,68 @@
+<!-- templates/survey.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>Health & Wellness Survey</h1>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-error">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" action="{{ url_for('submit_survey') }}">
+        <!-- Basic Information -->
+        <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="1" max="120">
+        </div>
+
+        <div class="form-group">
+            <label>性别</label>
+            <div class="gender-options">
+                <label class="gender-option">
+                    <input type="radio" name="gender" value="男" required>
+                    <span>男</span>
+                </label>
+                <label class="gender-option">
+                    <input type="radio" name="gender" value="女" required>
+                    <span>女</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        
+        <!-- Survey Questions -->
+        {% for q_id, question in questions.items() %}
+        <div class="question">
+            <div class="question-text">{{ loop.index }}. {{ question.text }}</div>
+            <div class="options">
+                {% for option_key, option_data in question.options.items() %}
+                <label class="option">
+                    <input type="radio" name="{{ q_id }}" value="{{ option_key }}" required>
+                    <span class="option-label">{{ option_key }}.</span>
+                    <span>{{ option_data.text }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="submit-btn">提交问卷</button>
+    </form>
+</div>
+{% endblock %}

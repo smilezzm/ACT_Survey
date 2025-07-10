@@ -1,0 +1,57 @@
+
+<!-- templates/admin.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1>Admin Dashboard</h1>
+    
+    <div style="margin-bottom: 30px;">
+        <h2>Survey Responses</h2>
+        <p>Total Responses: {{ responses|length }}</p>
+    </div>
+    
+    {% if responses %}
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 12px; border: 1px solid #ddd;">ID</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Age</th>
+                    <th stype="padding: 12px; border: 1px solid #ddd;">Gender</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Phone</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Question1 Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Question2 Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Question3 Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Question4 Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Question5 Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Total Score</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for response in responses %}
+                <tr>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[0] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[1] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[2] or '-' }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[3] or '-' }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[4] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[5] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[6] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[7] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[8] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;"><strong>{{ response[9] }}</strong></td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[10] }}</td>
+                    <td style="padding: 12px; border: 1px solid #ddd;">{{ response[11] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p>No responses yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

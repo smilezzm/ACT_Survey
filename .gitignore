@@ -1,0 +1,31 @@
+# Database files
+*.db
+survey_data.db
+
+*.xlsx
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Excel files (if they contain sensitive data)
+responses_export.xlsx
