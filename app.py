@@ -33,7 +33,7 @@ init_db()
 # Sample questions configuration
 QUESTIONS = {
     'q1': {
-        'text': '在过去4周内，在工作、学习或家中，有多少时间小船妨碍您进行日常活动？',
+        'text': '在过去4周内，在工作、学习或家中，有多少时间哮喘妨碍您进行日常活动？',
         'options': {
             'A': {'text': '所有时间', 'score': 1},
             'B': {'text': '大多数时间', 'score': 2},
